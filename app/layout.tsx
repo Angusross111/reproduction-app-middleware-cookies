@@ -8,9 +8,8 @@ export default async function RootLayout({
 }: {
     children: React.ReactNode;
 }) {
-    headers().forEach((header) => console.log("header", header));
-    const vercelCookie = cookies().get("vercel-cookie")?.value;
-    console.log("vercelCookie", vercelCookie);
+    const vercelCookie =
+        cookies().get("vercel-cookie")?.value || headers().get("vercel-cookie");
     if (!vercelCookie) notFound();
     return (
         <html lang="en">
